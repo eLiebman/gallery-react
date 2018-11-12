@@ -13,10 +13,10 @@ class Search extends Component {
   render() {
     return (
       <form className="search-form" onSubmit={ e => {
-                                                 e.preventDefault();
-                                                 this.props.search(this.state.searchTerm);
-                                                 this.updateSearchTerm("");
-                                               }
+                                                      e.preventDefault();
+                                                      this.props.search(this.state.searchTerm);
+                                                      this.updateSearchTerm("");
+                                                    }
                                              } >
         <input type="search" name="search" placeholder="Search" value={this.state.searchTerm} onChange={ e => this.updateSearchTerm(e.target.value) } required/>
         <button type="submit" className="search-button">

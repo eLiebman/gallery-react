@@ -19,7 +19,7 @@ class AppContainer extends Component {
   }
 
   componentDidMount() {
-    if( this.state.searchTerm ){
+    if(this.state.searchTerm) {
       this.search(this.state.searchTerm);
     }
   }
@@ -32,7 +32,7 @@ class AppContainer extends Component {
 
   search(searchTerm) {
     this.setState({loading: true}, () => {
-      axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${key}&text=${searchTerm}&per_page=24&page=1&format=json&nojsoncallback=1`)
+      axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${key}&tags=${searchTerm}&per_page=24&page=1&format=json&nojsoncallback=1`)
         .then( result =>
           result.data.photos.photo.map( pic => {
               return {
@@ -51,7 +51,7 @@ class AppContainer extends Component {
   render() {
     return (
       <div className="App">
-        <Search search={ this.search.bind(this) } />
+        <Search search={this.search.bind(this)} />
         <Nav />
         {
           this.props.location.pathname === "/"
@@ -59,8 +59,8 @@ class AppContainer extends Component {
           :this.state.loading
           ?"Loading..."
           :this.state.photos.length
-          ? <Photos photos={ this.state.photos } />
-          : <NotFound />
+          ?<Photos photos={this.state.photos} />
+          :<NotFound />
         }
       </div>
     );

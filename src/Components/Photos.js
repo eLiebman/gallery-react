@@ -7,7 +7,7 @@ const Photos = ({ photos, category }) => {
       <h2>results</h2>
       <ul>
         {
-          photos.map( photo => <Photo url={ photo.url } key={ photo.key } /> )
+          photos.map(photo => <Photo url={photo.url} key={photo.key} />)
         }
       </ul>
     </div>
