@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-          <Route path="search/:searchTerm?" component={AppContainer} />
+          <Route path="/:searchTerm?" component={AppContainer} />
       </BrowserRouter>
     );
   }
