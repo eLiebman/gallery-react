@@ -5,7 +5,8 @@ import axios from 'axios';
 import key from './config';
 
 // Components
-import AppContainer from './Components/AppContainer';
+import SearchPage from './Components/SearchPage';
+import StockPage from './Components/StockPage';
 
 class App extends Component {
   constructor() {
@@ -46,10 +47,10 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" />
-          <Route path="/cats" />
-          <Route path="/dogs" />
-          <Route path="/computers" />
-          <Route path="search/:searchTerm?" component={AppContainer} />
+          <Route path="/cats" render={() => <StockPage photos={this.state.cats} />} />
+          <Route path="/dogs" render={() => <StockPage photos={this.state.dogs} />} />
+          <Route path="/computers" render={() => <StockPage photos={this.state.computers} />} />
+          <Route path="/search/:searchTerm?" render={() => <SearchPage photos={this.state.photos} />} />
         </Switch>
       </BrowserRouter>
     );
