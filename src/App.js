@@ -50,7 +50,7 @@ class App extends Component {
           <Route path="/cats" render={() => <StockPage photos={this.state.cats} />} />
           <Route path="/dogs" render={() => <StockPage photos={this.state.dogs} />} />
           <Route path="/computers" render={() => <StockPage photos={this.state.computers} />} />
-          <Route path="/search/:searchTerm?" render={() => <SearchPage photos={this.state.photos} />} />
+          <Route path="/search/:searchTerm?" render={() => <SearchPage search={searchTerm => this.loadPhotos(searchTerm)} />} />
         </Switch>
       </BrowserRouter>
     );

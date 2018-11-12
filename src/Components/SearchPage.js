@@ -4,15 +4,15 @@ import React from "react";
 import Header from './Header';
 import PhotoGallery from './PhotoGallery';
 
-const SearchPage = props => {
+const SearchPage = (props, match) => {
   return (
     <div>
       <Header />
-      {
-        props.photos.length
-        ?<PhotoGallery photos={props.photos} />
+      {/*
+        props.match.params.searchTerm
+        ?<PhotoGallery photos={props.search(props.match.params.searchTerm)} />
         :""
-      }
+      */}
     </div>
   );
 }
