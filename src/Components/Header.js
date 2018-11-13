@@ -4,11 +4,11 @@ import React from 'react';
 import Nav from "./Nav";
 import SearchForm from "./SearchForm";
 
-const Header = () => {
+const Header = props => {
   return(
     <div>
       <Nav />
-      <SearchForm />
+      <SearchForm search={props.search}/>
     </div>
   );
 }

@@ -17,6 +17,7 @@ class SearchForm extends Component {
         onSubmit={ e => {
           e.preventDefault();
           this.props.search(this.state.searchTerm);
+          this.props.history.push(`/search/${this.state.searchTerm}`)
           this.updateSearchTerm("");
         }}
         >
