@@ -42,22 +42,25 @@ class App extends Component {
   }
 
   setPhotos = (searchTerm) => {
-    this.loadPhotos(searchTerm)
-      .then(result => this.setState({
-        ...this.state,
-        photos: result
-      }))
+    this.setState({loading: true, searchTerm: searchTerm}, () => {
+      this.loadPhotos(searchTerm)
+        .then(result => this.setState({
+          ...this.state,
+          photos: result,
+          loading: false
+        }))
+    });
   }
 
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" render={() => <Page photos={this.state.photos} search={this.setPhotos}/>} />
-          <Route path="/cats" render={() => <Page photos={this.state.cats} search={this.setPhotos} />} />
-          <Route path="/dogs" render={() => <Page photos={this.state.dogs} search={this.setPhotos} />} />
-          <Route path="/computers" render={() => <Page photos={this.state.computers} search={this.setPhotos} />} />
-          <Route path="/search/:searchTerm?" render={() => <Page search={this.setPhotos} photos={this.state.photos}/>} />
+          <Route exact path="/" render={() => <Page photos={this.state.photos} search={this.setPhotos} loading={this.state.loading} searchTerm="" />} />
+          <Route path="/cats" render={() => <Page photos={this.state.cats} search={this.setPhotos} loading={this.state.loading} searchTerm="cats" />} />
+          <Route path="/dogs" render={() => <Page photos={this.state.dogs} search={this.setPhotos} loading={this.state.loading} searchTerm="dogs" />} />
+          <Route path="/computers" render={() => <Page photos={this.state.computers} search={this.setPhotos} loading={this.state.loading} searchTerm="computers" />} />
+          <Route path="/search/:searchTerm?" render={() => <Page search={this.setPhotos} photos={this.state.photos} loading={this.state.loading} searchTerm={this.state.searchTerm} />} />
         </Switch>
       </BrowserRouter>
     );

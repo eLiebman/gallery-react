@@ -4,13 +4,13 @@ import React from "react";
 import Header from '../Components/Header';
 import PhotoGallery from '../Components/PhotoGallery';
 
-const SearchPage = props => {
+const Page = ({ search, photos, loading, searchTerm }) => {
   return (
     <div>
-      <Header search={props.search} />
-      <PhotoGallery photos={props.photos} />
+      <Header search={search} />
+      <PhotoGallery photos={photos} loading={loading} searchTerm={searchTerm} />
     </div>
   );
 }
 
-export default SearchPage;
+export default Page;
