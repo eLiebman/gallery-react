@@ -18,12 +18,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    Promise.all([this.loadPhotos('cat'), this.loadPhotos('dog'), this.loadPhotos('computer')])
+    Promise.all([this.loadPhotos('cat'), this.loadPhotos('dog'), this.loadPhotos('fish')])
       .then(results => this.setState({
             ...this.state,
             cats: results[0],
             dogs: results[1],
-            computers: results[2]
+            fish: results[2]
           })
       )
   }
@@ -43,14 +43,20 @@ class App extends Component {
   }
 
   setPhotos = (searchTerm) => {
-    this.setState({loading: true, searchTerm: searchTerm}, () => {
-      this.loadPhotos(searchTerm)
-        .then(result => this.setState({
-          ...this.state,
-          photos: result,
-          loading: false
-        }))
-    });
+    this.setState({
+        ...this.state,
+        loading: true,
+        searchTerm: searchTerm,
+        photos: []
+      }, () => {
+        this.loadPhotos(searchTerm)
+          .then(result => this.setState({
+            ...this.state,
+            photos: result,
+            loading: false
+          }))
+        }
+    );
   }
 
   render() {
@@ -60,7 +66,7 @@ class App extends Component {
           <Route exact path="/" render={() => <Page searchTerm="" photos={this.state.photos} search={this.setPhotos} loading={this.state.loading} />} />
           <Route path="/cats" render={() => <Page searchTerm="cats" photos={this.state.cats} search={this.setPhotos} loading={this.state.loading} />} />
           <Route path="/dogs" render={() => <Page searchTerm="dogs" photos={this.state.dogs} search={this.setPhotos} loading={this.state.loading} />} />
-          <Route path="/computers" render={() => <Page searchTerm="computers" photos={this.state.computers} search={this.setPhotos} loading={this.state.loading} />} />
+          <Route path="/fish" render={() => <Page searchTerm="fish" photos={this.state.fish} search={this.setPhotos} loading={this.state.loading} />} />
           <Route path="/search/:searchTerm?" render={() => <Page searchTerm={this.state.searchTerm} photos={this.state.photos} search={this.setPhotos} loading={this.state.loading} />} />
           <Route render={() => <ErrorPage search={this.setPhotos} />} />
         </Switch>
