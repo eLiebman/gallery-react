@@ -14,7 +14,7 @@ const Page = ({ search, photos, loading, searchTerm }) => {
         ?""
         :photos.length||loading
         ?<PhotoGallery photos={photos} loading={loading} searchTerm={searchTerm} />
-        :<NotFound />
+        :<NotFound searchTerm={searchTerm} />
       }
     </div>
   );
