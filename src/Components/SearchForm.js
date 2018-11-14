@@ -11,6 +11,12 @@ class SearchForm extends Component {
     this.props.search(this.props.match.params.searchTerm);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.match.params.searchTerm !== this.props.match.params.searchTerm) {
+      this.props.search(nextProps.match.params.searchTerm);
+    }
+  }
+
   updateSearchTerm(value) {
     this.setState({ searchTerm: value });
   }
@@ -22,7 +28,8 @@ class SearchForm extends Component {
         onSubmit={ e => {
           e.preventDefault();
           this.props.search(this.state.searchTerm);
-          this.props.history.push(`/search/${this.state.searchTerm}`)
+          this.props.history.push(`/search/${this.state.searchTerm}`);
+          this.props.updateMasterSearchTerm(this.state.searchTerm);
           this.updateSearchTerm("");
         }}
         >

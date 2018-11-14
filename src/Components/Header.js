@@ -4,12 +4,12 @@ import React from 'react';
 import Nav from "./Nav";
 import SearchForm from "./SearchForm";
 
-const Header = ({ search }) => {
+const Header = ({ search, updateSearchTerm }) => {
   return(
     <div>
       <h1>Search For Images!</h1>
       <Nav />
-      <SearchForm search={search}/>
+      <SearchForm search={search} updateMasterSearchTerm={updateSearchTerm} />
     </div>
   );
 }

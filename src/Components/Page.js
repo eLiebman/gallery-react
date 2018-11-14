@@ -5,10 +5,10 @@ import Header from './Header';
 import PhotoGallery from './PhotoGallery';
 import NotFound from './NotFound'
 
-const Page = ({ search, photos, loading, searchTerm }) => {
+const Page = ({ search, photos, loading, searchTerm, updateSearchTerm }) => {
   return (
     <div>
-      <Header search={search} />
+      <Header search={search} updateSearchTerm={updateSearchTerm} />
       {
         !searchTerm
         ?""
