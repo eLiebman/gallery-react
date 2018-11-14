@@ -7,6 +7,10 @@ class SearchForm extends Component {
     this.state = { searchTerm: "" };
   }
 
+  componentDidMount() {
+    this.props.search(this.props.match.params.searchTerm);
+  }
+
   updateSearchTerm(value) {
     this.setState({ searchTerm: value });
   }

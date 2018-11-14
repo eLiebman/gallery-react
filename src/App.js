@@ -6,6 +6,7 @@ import key from './config';
 
 // Components
 import Page from './Components/Page';
+import ErrorPage from './Components/ErrorPage'
 
 class App extends Component {
   constructor() {
@@ -56,11 +57,12 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" render={() => <Page photos={this.state.photos} search={this.setPhotos} loading={this.state.loading} searchTerm="" />} />
-          <Route path="/cats" render={() => <Page photos={this.state.cats} search={this.setPhotos} loading={this.state.loading} searchTerm="cats" />} />
-          <Route path="/dogs" render={() => <Page photos={this.state.dogs} search={this.setPhotos} loading={this.state.loading} searchTerm="dogs" />} />
-          <Route path="/computers" render={() => <Page photos={this.state.computers} search={this.setPhotos} loading={this.state.loading} searchTerm="computers" />} />
-          <Route path="/search/:searchTerm?" render={() => <Page search={this.setPhotos} photos={this.state.photos} loading={this.state.loading} searchTerm={this.state.searchTerm} />} />
+          <Route exact path="/" render={() => <Page searchTerm="" photos={this.state.photos} search={this.setPhotos} loading={this.state.loading} />} />
+          <Route path="/cats" render={() => <Page searchTerm="cats" photos={this.state.cats} search={this.setPhotos} loading={this.state.loading} />} />
+          <Route path="/dogs" render={() => <Page searchTerm="dogs" photos={this.state.dogs} search={this.setPhotos} loading={this.state.loading} />} />
+          <Route path="/computers" render={() => <Page searchTerm="computers" photos={this.state.computers} search={this.setPhotos} loading={this.state.loading} />} />
+          <Route path="/search/:searchTerm?" render={() => <Page searchTerm={this.state.searchTerm} photos={this.state.photos} search={this.setPhotos} loading={this.state.loading} />} />
+          <Route render={() => <ErrorPage search={this.setPhotos} />} />
         </Switch>
       </BrowserRouter>
     );
