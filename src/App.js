@@ -71,9 +71,6 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-<<<<<<< HEAD
-          <Route path="/:searchTerm?" component={AppContainer} />
-=======
         <Switch>
           <Route exact path="/" render={() => <Page searchTerm="" photos={this.state.photos} search={this.setPhotos} loading={this.state.loading} updateSearchTerm={this.updateSearchTerm} />} />
           <Route path="/cats" render={() => <Page searchTerm="cats" photos={this.state.cats} search={this.setPhotos} loading={this.state.loading} updateSearchTerm={this.updateSearchTerm} />} />
@@ -82,7 +79,6 @@ class App extends Component {
           <Route path="/search/:searchTerm?" render={() => <Page searchTerm={this.state.searchTerm} photos={this.state.photos} search={this.setPhotos} loading={this.state.loading} updateSearchTerm={this.updateSearchTerm} />} />
           <Route render={() => <ErrorPage search={this.setPhotos} />} />
         </Switch>
->>>>>>> Multi-Route
       </BrowserRouter>
     );
   }
