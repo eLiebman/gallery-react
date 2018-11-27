@@ -7,7 +7,7 @@ const Nav = props => {
       <ul>
         <li><NavLink to="/cats">Cats</NavLink></li>
         <li><NavLink to="/dogs">Dogs</NavLink></li>
-        <li><NavLink to="/computers">Computers</NavLink></li>
+        <li><NavLink to="/fish">Fish</NavLink></li>
       </ul>
     </nav>
   )
