@@ -5,6 +5,7 @@ import Header from './Header';
 import PhotoGallery from './PhotoGallery';
 import NotFound from './NotFound'
 
+// Page template
 const Page = ({ search, photos, loading, searchTerm, updateSearchTerm }) => {
   return (
     <div>
