@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import axios from 'axios';
 import key from './config';
 
 // Components
-import AppContainer from './Components/AppContainer';
 import Page from './Components/Page';
 import ErrorPage from './Components/ErrorPage'
 
